@@ -26,6 +26,8 @@ copy file index.js and reference it manually into the project.
       tileId:'secondaryTileId'
   });
 ```
+### options:
+ * `parser`: which Redis protocol reply parser to use.  Defaults to `hiredis` if that module is installed.
 
 
 ### Badge update:
@@ -34,4 +36,4 @@ copy file index.js and reference it manually into the project.
 ```
 ## License
 
-  WTFPL
+  [WTFPL](LICENSE.txt)
