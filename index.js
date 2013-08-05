@@ -237,7 +237,6 @@
 
 
     function updateBadge(value, options) {
-
         var badgeXml = BadgeUpdateManager.getTemplateContent(BadgeTemplateType.badgeNumber);
         var badgeAttributes = badgeXml.getElementsByTagName("badge");
         badgeAttributes[0].setAttribute("value", value);
