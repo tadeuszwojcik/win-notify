@@ -7,6 +7,7 @@
       "type":"git",
       "url":"git://github.com/tadeuszwojcik/win-notifier.git"
     },
+    "license": "WTFPL",
     "homepage":"https://github.com/tadeuszwojcik/win-notifier",
     "keywords": [
         "winjs",
@@ -17,6 +18,5 @@
         "tiles",
         "badges"
     ],
-    "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>",
-    "license": "MIT"
+    "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>"
 }
