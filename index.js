@@ -257,6 +257,7 @@
 
     function clearBadge(options) {
         options = options || {};
+        
         performActionOnBadgeUpdaterIfAllowed(options, function(badgeUpdater) {
             badgeUpdater.clear();
         });
