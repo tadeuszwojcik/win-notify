@@ -1,0 +1,22 @@
+{
+    "name": "win-notifier",
+    "version": "0.0.1",
+    "description": "Easy to use notifications for javascript windows store apps, no more handcrafting xml in javascript!",
+    "main": "index.js",
+    "repository":{
+      "type":"git",
+      "url":"git://github.com/tadeuszwojcik/win-notifier.git"
+    },
+    "homepage":"https://github.com/tadeuszwojcik/win-notifier",
+    "keywords": [
+        "winjs",
+        "windows 8",
+        "windows store",
+        "app",
+        "notifications",
+        "tiles",
+        "badges"
+    ],
+    "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>",
+    "license": "MIT"
+}
