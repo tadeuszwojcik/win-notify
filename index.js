@@ -28,6 +28,10 @@
       .replace(/&#39;/g, "'");
   }
 
+  function lowercaseFirstLetter(string) {
+    return string.charAt(0).toLowerCase() + string.slice(1);
+  }
+
   function assignImageValuesToXmlAttributes(xml, templateValues) {
     var imageXmlAttributes = xml.getElementsByTagName("image");
 
@@ -156,7 +160,8 @@
   }
 
   function getTileTemplateContent(name) {
-    var templateNumber = TileTemplateType[name];
+    var templateNumber = TileTemplateType[lowercaseFirstLetter(name)];
+    if (templateNumber === undefined) throw new Error('Tile template with "' + name + '" name doesn\'t exist');
     return TileUpdateManager.getTemplateContent(templateNumber);
   }
 
@@ -204,7 +209,8 @@
 
 
   function getToastTemplateContent(name) {
-    var templateNumber = ToastTemplateType[name];
+    var templateNumber = ToastTemplateType[lowercaseFirstLetter(name)];
+    if (templateNumber === undefined) throw new Error('Toast template with "' + name + '" name doesn\'t exist');
 
     return ToastNotificationManager.getTemplateContent(templateNumber);
   }
@@ -282,4 +288,4 @@
     clearBadge: clearBadge
   };
 
-})(typeof(window) === 'undefined' ? module.exports : window);
+})(typeof (window) === 'undefined' ? module.exports : window);
