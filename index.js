@@ -19,6 +19,15 @@
   var secondaryTileUpdaters = {};
   var secondaryBadgeUpdaters = {};
 
+  function unescapeHtml(unsafe) {
+    return unsafe
+      .replace(/&amp;/g, "&")
+      .replace(/&lt;/g, "<")
+      .replace(/&gt;/g, ">")
+      .replace(/&quot;/g, "\"")
+      .replace(/&#39;/g, "'");
+  }
+
   function assignImageValuesToXmlAttributes(xml, templateValues) {
     var imageXmlAttributes = xml.getElementsByTagName("image");
 
@@ -44,10 +53,10 @@
       if (!textValue) continue;
 
       if (typeof textValue === 'string') {
-        textXmlAttributes[i].appendChild(xml.createTextNode(textValue));
+        textXmlAttributes[i].appendChild(xml.createTextNode(unescapeHtml(textValue)));
       } else {
         textXmlAttributes[i].setAttribute("lang", textValue.lang);
-        textXmlAttributes[i].appendChild(xml.createTextNode(textValue));
+        textXmlAttributes[i].appendChild(xml.createTextNode(unescapeHtml(textValue)));
       }
     }
   }
