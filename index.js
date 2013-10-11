@@ -263,13 +263,13 @@
     });
   }
 
-  exports.winNotifier = {
-    updateTile: updateTile,
-    scheduleTileUpdate: scheduleTileUpdate,
+  exports.winNotify = {
+    viaTileUpdate: updateTile,
+    viaScheduledTileUpdate: scheduleTileUpdate,
     clearTile: clearTile,
-    showToast: showToast,
-    scheduleToastToDisplay: scheduleToastToDisplay,
-    updateBadge: updateBadge,
+    viaToast: showToast,
+    viatScheduledToast: scheduleToastToDisplay,
+    viaBadgeUpdate: updateBadge,
     clearBadge: clearBadge
   };
 
