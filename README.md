@@ -37,6 +37,12 @@ copy file index.js and reference it manually into the project.
 ```js 
   winNotifier.updateBadge(10);
 ```
+
+
+| 	tile | usage  |
+| ------------- |:-------------:|:-----:|
+|![alt text](http://i.msdn.microsoft.com/dynimg/IC612766.png "Logo Title Text 1")|dfgdfg|
+|![alt text](http://i.msdn.microsoft.com/dynimg/IC665887.jpg "Logo Title Text 1")|dfgdfg|
 ## License
 
   [WTFPL](LICENSE.txt)
