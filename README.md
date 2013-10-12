@@ -37,6 +37,13 @@ copy file index.js and reference it manually into the project.
 ```js 
   winNotifier.updateBadge(10);
 ```
+<div>
+  <p style='float:right;'>
+    sdfsdf
+  <p>
+</div>
+
+<div style="float: right"><img src="whatever.jpg" /></div>
 
 
 | 	tile | usage  |
