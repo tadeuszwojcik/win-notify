@@ -1,45 +1,96 @@
 win-notify
 =====================
 
-  Easy to use notifications for javascript windows store apps
+  Easy to use notifications for JavaScript Windows Store Apps, no more xml in your js code!
 
 ## Why?
 ## Installation
 
-## Usage
-## API
-## Credits
-## License
-
-
+```sh
+$ npm install win-notify
 ```
-$ npm install win-notifier
+```sh
+$ bower install win-notify
 ```
+or just copy file win-notify.js file.
 
-or
-
-copy file index.js and reference it manually into the project.
 
 ## Usage
+##### Prerequisites
+* reference win-notify.js file
 
-### Toast notification:
+### Tile notifications
+![tile notifications](https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg)
 
-![b4ce4dc4-smush-tiles](https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg)
 
-![sdf](https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG)
 
-#### examples
+Let's say we want to update tile, with text and image when it's displayed on start screen as 
+wide tile and text only when it's displayed as medium tile:
+
+##### using `win-notify` :
 ```js
-  winNotifier.showToast({
-      toastText01: {
-          text1: 'Hello!'
-      }
-  },{
-      silent: true,
-      tileId:'secondaryTileId'
-  });
+winNotify.viaTileUpdate({
+    tileWide310x150SmallImageAndText04: {
+      image1: 'http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png',
+      text1: 'Hello',
+      text2: 'World'
+    },
+    tileSquareText02: {
+      text1: 'Hello',
+      text2: 'World'
+    }
+  }
+);
 ```
 
-## License
+##### using standard WinRT API:
+```js
+var Notifications = Windows.UI.Notifications;
+var Imaging = Windows.Graphics.Imaging;
 
+var tileXml = Notifications.TileUpdateManager.getTemplateContent(
+  Notifications.TileTemplateType.tileWide310x150SmallImageAndText04);
+
+var tileTextAttributes = tileXml.getElementsByTagName("text");
+tileTextAttributes[0].appendChild(tileXml.createTextNode("Hello"));
+tileTextAttributes[1].appendChild(tileXml.createTextNode("World"));
+
+
+var tileImageAttributes = tileXml.getElementsByTagName("image");
+tileImageAttributes[0].setAttribute("src", "http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png");
+
+
+var squareTileXml = Notifications.TileUpdateManager.getTemplateContent(
+  Notifications.TileTemplateType.tileSquareText02);
+
+var squareTileTextAttributes = squareTileXml.getElementsByTagName("text");
+squareTileTextAttributes[0].appendChild(squareTileXml.createTextNode("Hello"));
+squareTileTextAttributes[1].appendChild(squareTileXml.createTextNode("World"));
+
+
+var node = tileXml.importNode(squareTileXml.getElementsByTagName("binding").item(0), true);
+tileXml.getElementsByTagName("visual").item(0).appendChild(node);
+
+var tileNotification = new Notifications.TileNotification(tileXml);
+
+var tileUpdater = Windows.UI.Notifications.TileUpdateManager.createTileUpdaterForApplication();
+tileUpdater.update(tileNotification);
+```
+
+Hope you see which one is simpler and why it's worth using `win-notify` in your project.
+
+
+
+### Tile notifications
+![toast notifications](https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG)
+
+## API
+
+## Credits
+
+Thanks Kraig Brockschmidt for images (hope he don't mind) and presentation [Alive with Activity](http://channel9.msdn.com/Events/Build/2013/3-159) explaining notifications concepts in clear way.
+## License
   [WTFPL](LICENSE.txt)
+
+
+
