@@ -1,8 +1,16 @@
-# win-notifier
+win-notify
+=====================
 
-  Easy to use notifications for javascript(WinJS etc) windows store apps, no more handcrafting xml in javascript!
+  Easy to use notifications for javascript windows store apps
 
+## Why?
 ## Installation
+
+## Usage
+## API
+## Credits
+## License
+
 
 ```
 $ npm install win-notifier
