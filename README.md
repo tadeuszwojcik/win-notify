@@ -20,6 +20,8 @@ or just copy file win-notify.js file.
 * reference win-notify.js file
 
 ### Tile notifications
+
+
 ![tile notifications](https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg)
 
 
@@ -27,8 +29,8 @@ or just copy file win-notify.js file.
 Let's say we want to update tile, with text and image when it's displayed on start screen as 
 wide tile and text only when it's displayed as medium tile:
 
-![screenshot 3](https://f.cloud.github.com/assets/1707138/1369064/0a239e74-39d3-11e3-974f-9bb9aef34a84.png) &nbsp;
-![screenshot 5](https://f.cloud.github.com/assets/1707138/1369063/0a2370e8-39d3-11e3-8ea6-0b8336697dae.png)
+![tile medium](https://f.cloud.github.com/assets/1707138/1369086/bbfe889c-39d4-11e3-9c42-ef99011ec09f.png) &nbsp;
+![tile wide](https://f.cloud.github.com/assets/1707138/1369087/bc14292c-39d4-11e3-91cf-f5fef65a2a0f.png)
 
 ##### using `win-notify` :
 ```js
@@ -46,7 +48,7 @@ winNotify.viaTileUpdate({
 );
 ```
 
-##### using standard WinRT API:
+##### using native WinRT notifications API:
 ```js
 var Notifications = Windows.UI.Notifications;
 var Imaging = Windows.Graphics.Imaging;
@@ -58,10 +60,8 @@ var tileTextAttributes = tileXml.getElementsByTagName("text");
 tileTextAttributes[0].appendChild(tileXml.createTextNode("Hello"));
 tileTextAttributes[1].appendChild(tileXml.createTextNode("World"));
 
-
 var tileImageAttributes = tileXml.getElementsByTagName("image");
 tileImageAttributes[0].setAttribute("src", "http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png");
-
 
 var squareTileXml = Notifications.TileUpdateManager.getTemplateContent(
   Notifications.TileTemplateType.tileSquareText02);
@@ -69,7 +69,6 @@ var squareTileXml = Notifications.TileUpdateManager.getTemplateContent(
 var squareTileTextAttributes = squareTileXml.getElementsByTagName("text");
 squareTileTextAttributes[0].appendChild(squareTileXml.createTextNode("Hello"));
 squareTileTextAttributes[1].appendChild(squareTileXml.createTextNode("World"));
-
 
 var node = tileXml.importNode(squareTileXml.getElementsByTagName("binding").item(0), true);
 tileXml.getElementsByTagName("visual").item(0).appendChild(node);
@@ -80,14 +79,21 @@ var tileUpdater = Windows.UI.Notifications.TileUpdateManager.createTileUpdaterFo
 tileUpdater.update(tileNotification);
 ```
 
-Hope you see which one is simpler and why it's worth using `win-notify` in your project.
+Hope you see now which one is simpler and why it's worth using `win-notify` in your project.
+See API section to learn more about details.
 
 
+### Toast notifications
 
 
-### Tile notifications
 ![toast notifications](https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG)
 
+
+Let's say we want to show toast notification with text and image:
+
+![toast](https://f.cloud.github.com/assets/1707138/1369088/bc283fb6-39d4-11e3-8ed2-2deab9383731.png)
+
+##### using `win-notify` :
 ```js
 winNotify.viaToast({
   toastImageAndText02: {
@@ -98,6 +104,7 @@ winNotify.viaToast({
 });
 ```
 
+##### using native WinRT notifications API:
 ```js
 var notifications = Windows.UI.Notifications;
 
@@ -115,6 +122,11 @@ var toast = new notifications.ToastNotification(toastXml);
 var toastNotifier = notifications.ToastNotificationManager.createToastNotifier();
 toastNotifier.show(toast);
 ```
+
+Again, `win-notify` is much simpler and easier to use than native WinRT notifications API.
+See API section to learn more about details.
+
+
 ## API
 
 ## Credits
