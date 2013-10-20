@@ -2,8 +2,12 @@ win-notify
 =====================
 
   Easy to use notifications for JavaScript Windows Store Apps, no more xml in your js code!
+  
+  Compatibile with **Windows 8** and **8.1**.
 
 ## Why?
+ 
+Live tiles and toasts are great way to engage users
 ## Installation
 
 ```sh
@@ -128,6 +132,7 @@ See API section to learn more about details.
 
 
 ## API
+
 
 ## Credits
 
