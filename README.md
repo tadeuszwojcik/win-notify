@@ -133,6 +133,28 @@ See API section to learn more about details.
 
 ## API
 
+### `winNotify.viaTileUpdate`
+
+```js
+   winNotify.viaTileUpdate({
+    'templateName': {
+       ... template paremeters
+    },
+    'templateName' : {
+      ... template parameters
+    }
+   } options);
+```
+
+
+### `winNotify.viaScheduledTileUpdate`
+### `winNotify.clearTile`
+### `winNotify.viaToast`
+### `winNotify.viaScheduledToast`
+### `winNotify.viaBadgeUpdate`
+### `winNotify.clearBadge`
+
+
 
 ## Credits
 
