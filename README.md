@@ -27,6 +27,9 @@ or just copy file win-notify.js file.
 Let's say we want to update tile, with text and image when it's displayed on start screen as 
 wide tile and text only when it's displayed as medium tile:
 
+![screenshot 3](https://f.cloud.github.com/assets/1707138/1369064/0a239e74-39d3-11e3-974f-9bb9aef34a84.png) &nbsp;
+![screenshot 5](https://f.cloud.github.com/assets/1707138/1369063/0a2370e8-39d3-11e3-8ea6-0b8336697dae.png)
+
 ##### using `win-notify` :
 ```js
 winNotify.viaTileUpdate({
@@ -81,9 +84,37 @@ Hope you see which one is simpler and why it's worth using `win-notify` in your 
 
 
 
+
 ### Tile notifications
 ![toast notifications](https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG)
 
+```js
+winNotify.viaToast({
+  toastImageAndText02: {
+    text1: 'Hello',
+    text2: 'World',
+    image1: 'http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png',
+  }
+});
+```
+
+```js
+var notifications = Windows.UI.Notifications;
+
+var template = notifications.ToastTemplateType.toastImageAndText02;
+var toastXml = notifications.ToastNotificationManager.getTemplateContent(template);
+
+var toastTextElements = toastXml.getElementsByTagName("text");
+toastTextElements[0].innerText = "Hello";
+toastTextElements[1].innerText = "World"; 
+
+var toastImageElements = toastXml.getElementsByTagName("image");
+toastImageElements[0].setAttribute("src", "http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png");
+
+var toast = new notifications.ToastNotification(toastXml);
+var toastNotifier = notifications.ToastNotificationManager.createToastNotifier();
+toastNotifier.show(toast);
+```
 ## API
 
 ## Credits
