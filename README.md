@@ -17,7 +17,8 @@ copy file index.js and reference it manually into the project.
 ### Toast notification:
 
 ![b4ce4dc4-smush-tiles](https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg)
-![f538dd67-smush-toasts](https://f.cloud.github.com/assets/1707138/1368883/13ff7038-39c6-11e3-8b64-985fa929467b.jpg)
+
+![sdf](https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG)
 
 #### examples
 ```js
