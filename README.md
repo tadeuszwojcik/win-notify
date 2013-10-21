@@ -20,7 +20,7 @@ which has a bit nicer API, but requires compiling C# code in your JavaScript app
 
 I was bit frustrated by the current state of affairs, so written this lib.
 It's not too abstracted from native WinRT API, 
-but provides much simpler way of working with notifications from Javascript (at least I hope so).
+but provides **much simpler way of working with notifications from Javascript** (at least I hope so).
 
 
 ## Installation
