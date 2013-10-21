@@ -283,7 +283,7 @@
     viaScheduledTileUpdate: scheduleTileUpdate,
     clearTile: clearTile,
     viaToast: showToast,
-    viatScheduledToast: scheduleToastToDisplay,
+    viaScheduledToast: scheduleToastToDisplay,
     viaBadgeUpdate: updateBadge,
     clearBadge: clearBadge
   };
