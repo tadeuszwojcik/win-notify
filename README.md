@@ -146,6 +146,24 @@ See API section to learn more about details.
 ## API
 ### Tile updates
 #### Prerequisites
+### Toasts notifications
+### Badge updates
+
+
+unescapes escaped html automatically
+
+lowercases template names
+
+image src, or src alt, addImageQuery
+
+text, or text lang, cos tu nie gra w kodzie
+
+debugging
+
+secondary tiles
+
+### not implemented by API - scheduled?
+
 Template definitions
 options
 ### `winNotify.viaTileUpdate`
