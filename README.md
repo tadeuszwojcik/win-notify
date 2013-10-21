@@ -14,7 +14,7 @@ isn't JavaScript friendly(to put it mildly - [see example below](#using-native-w
 are great way to engage users.
 WinRT API provides way to utilize those features, unfortunately it requires messing with 
 XML (yeah XML - [see example below](#using-native-winrt-notifications-api)) and work with API which is more designed for C#/C++ devs.
-To mitigate that issue Microsoft advices to use
+To mitigate that issue some folks advice to use
 [notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
 which has a bit nicer API, but requires compiling C# code in your JavaScript app (**WAT?**).
 
