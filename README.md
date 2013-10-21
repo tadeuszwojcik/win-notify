@@ -7,16 +7,20 @@ win-notify
 
 ## Why?
 **Short version**: because native WinRT notifications
-API([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) isn't JavaScript friendly(to put it mildly).
+API([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) 
+isn't JavaScript friendly(to put it mildly).
 See examples below.
 
-**Longer version**: Everyone who builds Windows Store apps know that live tiles and toasts notifications are great way to engage users.
-WinRT API provides way to utilize those features, unfortunatelly it requires messing with XML (yeah XML, see examples below) and work with API which is more designed for C#/C++ devs.
-To mitigate that issue Microsoft advices to use [notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
-which has bit nicer API, but requires compiling c# code in your JavaScript app (WAT?).
-I was bit frustrated by that, so written this lib, it's not too abstracted from native WinRT api (the same names etc), 
-but provides much simpler way of working with notifications from Javascript (at least I hope so)
-
+**Longer version**: Everyone who builds Windows Store apps know that live tiles and toasts notifications 
+are great way to engage users.
+WinRT API provides way to utilize those features, unfortunatelly it requires messing with 
+XML (yeah XML, see examples below) and work with API which is more designed for C#/C++ devs.
+To mitigate that issue Microsoft advices to use
+[notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
+which has a bit nicer API, but requires compiling C# code in your JavaScript app (**WAT?**).
+I was bit frustrated by the current state of affairs, so written this lib.
+It's not too mcu abstracted from native WinRT api (the same names etc), 
+but provides much simpler way of working with notifications from Javascript (at least I hope so).
 
 
 ## Installation
