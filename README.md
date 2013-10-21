@@ -1,13 +1,24 @@
 win-notify
 =====================
 
-  Easy to use notifications for JavaScript Windows Store Apps, no more xml in your js code!
+  Easy to use notifications for JavaScript Windows Store Apps.
   
-  Compatibile with **Windows 8** and **8.1**.
+  Compatible with **Windows 8** and **8.1** APIs.
 
 ## Why?
- 
-Live tiles and toasts are great way to engage users
+**Short version**: because native WinRT notifications
+API([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) isn't JavaScript friendly(to put it mildly).
+See examples below.
+
+**Longer version**: Everyone who builds Windows Store apps know that live tiles and toasts notifications are great way to engage users.
+WinRT API provides way to utilize those features, unfortunatelly it requires messing with XML (yeah XML, see examples below) and work with API which is more designed for C#/C++ devs.
+To mitigate that issue Microsoft advices to use [notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
+which has bit nicer API, but requires compiling c# code in your JavaScript app (WAT?).
+I was bit frustrated by that, so written this lib, it's not too abstracted from native WinRT api (the same names etc), 
+but provides much simpler way of working with notifications from Javascript (at least I hope so)
+
+
+
 ## Installation
 
 ```sh
@@ -16,13 +27,10 @@ $ npm install win-notify
 ```sh
 $ bower install win-notify
 ```
-or just copy file win-notify.js file.
+or just copy file win-notify.js file to your project.
 
 
-## Usage
-##### Prerequisites
-* reference win-notify.js file
-
+## Examples 
 ### Tile notifications
 
 
@@ -83,7 +91,7 @@ var tileUpdater = Windows.UI.Notifications.TileUpdateManager.createTileUpdaterFo
 tileUpdater.update(tileNotification);
 ```
 
-Hope you see now which one is simpler and why it's worth using `win-notify` in your project.
+Hope you see now which one is **simpler** and why it's worth using `win-notify` in your project.
 See API section to learn more about details.
 
 
@@ -127,12 +135,15 @@ var toastNotifier = notifications.ToastNotificationManager.createToastNotifier()
 toastNotifier.show(toast);
 ```
 
-Again, `win-notify` is much simpler and easier to use than native WinRT notifications API.
+Again, `win-notify` is much **simpler** to use than native WinRT notifications API.
 See API section to learn more about details.
 
 
 ## API
-
+### Tile updates
+#### Prerequisites
+Template definitions
+options
 ### `winNotify.viaTileUpdate`
 
 ```js
@@ -153,7 +164,6 @@ See API section to learn more about details.
 ### `winNotify.viaScheduledToast`
 ### `winNotify.viaBadgeUpdate`
 ### `winNotify.clearBadge`
-
 
 
 ## Credits
