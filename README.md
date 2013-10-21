@@ -8,18 +8,18 @@ win-notify
 ## Why?
 **Short version**: because native WinRT notifications
 API([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) 
-isn't JavaScript friendly(to put it mildly).
-See examples below.
+isn't JavaScript friendly(to put it mildly - [see example below](#using-native-winrt-notifications-api)).
 
 **Longer version**: Everyone who builds Windows Store apps know that live tiles and toasts notifications 
 are great way to engage users.
-WinRT API provides way to utilize those features, unfortunatelly it requires messing with 
-XML (yeah XML, see examples below) and work with API which is more designed for C#/C++ devs.
+WinRT API provides way to utilize those features, unfortunately it requires messing with 
+XML (yeah XML - [see example below](#using-native-winrt-notifications-api)) and work with API which is more designed for C#/C++ devs.
 To mitigate that issue Microsoft advices to use
 [notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
 which has a bit nicer API, but requires compiling C# code in your JavaScript app (**WAT?**).
+
 I was bit frustrated by the current state of affairs, so written this lib.
-It's not too mcu abstracted from native WinRT api (the same names etc), 
+It's not too abstracted from native WinRT API, 
 but provides much simpler way of working with notifications from Javascript (at least I hope so).
 
 
@@ -31,7 +31,7 @@ $ npm install win-notify
 ```sh
 $ bower install win-notify
 ```
-or just copy file win-notify.js file to your project.
+or simply copy file win-notify.js file to your project.
 
 
 ## Examples 
