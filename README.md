@@ -1,7 +1,7 @@
 win-notify
 =====================
 
-  Easy to use notifications for JavaScript Windows Store Apps.
+ Simple notifications API for JavaScript Windows Store Apps
   
   Compatible with **Windows 8** and **8.1** APIs.
 
