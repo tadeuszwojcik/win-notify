@@ -42,7 +42,7 @@ or simply copy file win-notify.js file to your project.
 
 
 
-Let's say we want to update tile, with text and image when it's displayed on start screen as 
+Let's say we want to update tile with text and image when it's displayed on start screen as 
 wide tile and text only when it's displayed as medium tile:
 
 ![tile medium](https://f.cloud.github.com/assets/1707138/1369086/bbfe889c-39d4-11e3-9c42-ef99011ec09f.png) &nbsp;
@@ -95,7 +95,7 @@ var tileUpdater = Windows.UI.Notifications.TileUpdateManager.createTileUpdaterFo
 tileUpdater.update(tileNotification);
 ```
 
-Hope you see now which one is **simpler** and why it's worth using `win-notify` in your project.
+Hope you see now which API is **simpler** and why it's worth using `win-notify` in your project.
 See API section to learn more about details.
 
 
