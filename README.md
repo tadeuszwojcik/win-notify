@@ -1,16 +1,16 @@
 win-notify
 =====================
 
- Simple notifications API for JavaScript Windows Store Apps
+ Simple notifications API for JavaScript Windows Store apps.
   
   Compatible with **Windows 8** and **8.1** APIs.
 
 ## Why?
 **Short version**: because native WinRT notifications
-API([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) 
+API ([Windows.UI.Notifications](http://msdn.microsoft.com/library/windows/apps/br208661)) 
 isn't JavaScript friendly(to put it mildly - [see example below](#using-native-winrt-notifications-api)).
 
-**Longer version**: Everyone who builds Windows Store apps know that live tiles and toasts notifications 
+**Longer version**: Everyone who builds Windows Store apps knows that live tiles and toasts notifications 
 are great way to engage users.
 WinRT API provides way to utilize those features, unfortunately it requires messing with 
 XML (yeah XML - [see example below](#using-native-winrt-notifications-api)) and work with API which is more designed for C#/C++ devs.
