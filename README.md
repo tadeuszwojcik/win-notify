@@ -14,9 +14,6 @@ isn't JavaScript friendly(to put it mildly - [see example below](#using-native-w
 are great way to engage users.
 WinRT API provides way to utilize those features, unfortunately it requires messing with 
 XML (yeah XML - [see example below](#using-native-winrt-notifications-api)) and work with API which is more designed for C#/C++ devs.
-To mitigate that issue some folks advice to use
-[notifications extensions library](http://msdn.microsoft.com/en-us/library/windows/apps/hh969156.aspx)
-which has a bit nicer API, but requires compiling C# code in your JavaScript app (**WAT?**).
 
 I was bit frustrated by the current state of affairs, so written this lib.
 It's not too abstracted from native WinRT API, 
@@ -148,7 +145,9 @@ See API section to learn more about details.
 
 ## API
 ### Tile updates
-#### Prerequisites
+#### `winNotify.viaTileUpdate((templatesDefinition)[www.onet.pl], options)` - updates live tile with new content defined in templates definition
+
+
 ### Toasts notifications
 ### Badge updates
 
