@@ -286,6 +286,7 @@ Updates a badge overlay tile.
 
 
 `Value` is a string and defines badge value ([MSDN referene](http://msdn.microsoft.com/en-us/library/windows/apps/br212849.aspx)).
+
 `Options` object can contain `tileId` property, so badge update will update badge of secondary tile, not main app tile.
 
 #### `winNotify.clearBadge([optional] options)`
