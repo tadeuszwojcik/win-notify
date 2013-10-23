@@ -143,7 +143,7 @@ See API section to learn more about details.
 
 ## API
 ### Tile updates
-#### `winNotify.viaTileUpdate(templatesDefinition, options)`
+#### `winNotify.viaTileUpdate(templatesDefinition, [optional] options)`
 Updates live tile with new content defined in templates definition.
 ##### templatesDefinition
 It's an object with following structure:
@@ -204,12 +204,28 @@ Notice that `image` and `text` properites have proper suffixes which match `id` 
 
 
 ##### options
+It's an object with following properties (all optional):
+* `addImageQuery` 
+* `baseUri`
+* `branding`
+* `contentId`
+* `lang`
+* `version`
+Read more about each of on (MSDN)[http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx]
+
+Additionalally options object can contain following properties:
+* `tag` - gets or sets a string that Windows can use to prevent duplicate notification content from appearing in the queue.
+* `expirationTime` - gets or sets the time (DateTime) that Windows will remove the notification from the tile.
+* `tileId` - if not specified tile update will update application tile, if specified it will update ** secondary tile **
+if secondary tile with `tileId` exists
+
+* `deliveryTime` - gets the time (DateTime) at which the tile is scheduled to be updated (applies only to scheduled tile updates).
+* `id` - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).
+
+#### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 
 
-
-#### `winNotify.viaScheduledTileUpdate(templatesDefinition, options)`
-
-#### `winNotify.clearTile(options)`
+#### `winNotify.clearTile([optional] options)`
 
 
 ### Toasts notifications
