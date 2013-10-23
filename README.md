@@ -46,7 +46,7 @@ Let's say we want to update tile with text and image when it's displayed on star
 wide tile and text only when it's displayed as medium tile:
 
 ![tile medium](https://f.cloud.github.com/assets/1707138/1369086/bbfe889c-39d4-11e3-9c42-ef99011ec09f.png) &nbsp;
-![tile wide](https://f.cloud.github.com/assets/1707138/1369087/bc14292c-39d4-11e3-91cf-f5fef65a2a0f.png)
+![tile wide](https://f.cloud.github.com/assets/1707138/1392451/4f901d72-3c0b-11e3-9c7a-6825eb33055c.PNG)
 
 ##### using `win-notify` :
 ```js
@@ -107,7 +107,7 @@ See API section to learn more about details.
 
 Let's say we want to show toast notification with text and image:
 
-![toast](https://f.cloud.github.com/assets/1707138/1369088/bc283fb6-39d4-11e3-8ed2-2deab9383731.png)
+![toast](https://f.cloud.github.com/assets/1707138/1392452/4fba40ca-3c0b-11e3-8f9f-68147b45b475.PNG)
 
 ##### using `win-notify` :
 ```js
