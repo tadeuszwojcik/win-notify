@@ -145,6 +145,65 @@ See API section to learn more about details.
 ### Tile updates
 #### `winNotify.viaTileUpdate(templatesDefinition, options)`
 Updates live tile with new content defined in templates definition.
+##### templatesDefinition
+It's an object with following structure:
+
+```js
+   {
+    'templateDefinitio': {
+       ... template paremeters
+    },
+    'TemplateDefinition' : {
+      ... template parameters
+    }
+   }
+```
+Each `TemplateDefinition` object needs to be valid template name, for example `tileSquare150x150Text04` ((check out tiles templates catalog)[http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx]).
+Both camelCase and PascalCase naming conventions are supported. If you want to send update only for one tile type, 
+specify only one template definition, if you want to handle more tile types(medium, wide, large etc) specify template definition 
+for each of them (it's actually best practise to send updates to all handled by app tile types, as user can change tile type anytime).
+
+###### Template definition object
+When you know which template definition from catalog you want to use, `templateDefinition` 
+object needs to contain properties for such template and it can be type `text` or `image`.
+
+* `image` - can be simple `string` or `object` with `src`, `alt` and `addImageQuery` properties - 
+  (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx]
+
+* `text` - can be simple `string` or `object` with `lang` and `text` properties - 
+  (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx]
+
+Let's say we want to use template `TileSquare150x150PeekImageAndText02`:
+It looks like:
+```
+<tile>
+  <visual version="2">
+    <binding template="TileSquare150x150PeekImageAndText02" fallback="TileSquarePeekImageAndText02">
+      <image id="1" src="image1" alt="alt text"/>
+      <text id="1">Text Field 1 (larger text)</text>
+      <text id="2">Text Field 2</text>
+    </binding>  
+  </visual>
+</tile>
+```
+Template definition object for such template looks like:
+```js
+tileSquare150x150PeekImageAndText02: {
+      image1: {
+        src:'image1',
+        alt:'alt text'
+      },
+      text1: 'Text Field 1 (larger text)',
+      text2: 'Text Field 2'
+    }
+```
+Notice that `image` and `text` properites have proper suffixes which match `id` of element in template xml.
+
+
+
+
+
+##### options
 
 
 
@@ -153,11 +212,8 @@ Updates live tile with new content defined in templates definition.
 #### `winNotify.clearTile(options)`
 
 
-
-
-
-
 ### Toasts notifications
+
 ### Badge updates
 
 
