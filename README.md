@@ -52,7 +52,7 @@ wide tile and text only when it's displayed as medium tile:
 ```js
 winNotify.viaTileUpdate({
     tileWide310x150SmallImageAndText04: {
-      image1: 'http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png',
+      image1: 'http://uifaces.com/faces/_twitter/cacestgang_73.jpg',
       text1: 'Hello',
       text2: 'World'
     },
@@ -77,7 +77,7 @@ tileTextAttributes[0].appendChild(tileXml.createTextNode("Hello"));
 tileTextAttributes[1].appendChild(tileXml.createTextNode("World"));
 
 var tileImageAttributes = tileXml.getElementsByTagName("image");
-tileImageAttributes[0].setAttribute("src", "http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png");
+tileImageAttributes[0].setAttribute("src", "http://uifaces.com/faces/_twitter/cacestgang_73.jpg");
 
 var squareTileXml = Notifications.TileUpdateManager.getTemplateContent(
   Notifications.TileTemplateType.tileSquareText02);
@@ -115,7 +115,7 @@ winNotify.viaToast({
   toastImageAndText02: {
     text1: 'Hello',
     text2: 'World',
-    image1: 'http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png',
+    image1: 'http://uifaces.com/faces/_twitter/cacestgang_73.jpg',
   }
 });
 ```
@@ -132,7 +132,7 @@ toastTextElements[0].innerText = "Hello";
 toastTextElements[1].innerText = "World"; 
 
 var toastImageElements = toastXml.getElementsByTagName("image");
-toastImageElements[0].setAttribute("src", "http://www.indianeworld.com/wp-content/uploads/2013/08/hello-world-java-program.png");
+toastImageElements[0].setAttribute("src", "http://uifaces.com/faces/_twitter/cacestgang_73.jpg");
 
 var toast = new notifications.ToastNotification(toastXml);
 var toastNotifier = notifications.ToastNotificationManager.createToastNotifier();
