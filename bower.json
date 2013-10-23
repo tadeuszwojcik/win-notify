@@ -1,0 +1,23 @@
+{
+  "name": "win-notify",
+  "version": "0.1.1",
+  "description": "Simple notifications API for JavaScript Windows Store apps",
+  "main": "win-notify.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/tadeuszwojcik/win-notify.git"
+  },
+  "license": "WTFPL",
+  "homepage": "http://tadeuszwojcik.github.io/win-notify",
+  "keywords": [
+    "winjs",
+    "windows 8",
+    "windows store",
+    "app",
+    "notifications",
+    "tiles",
+    "badges",
+    "updates"
+  ],
+  "author": "Tadeusz Wójcik <tadeuszwojcik@gmail.com>"
+}
