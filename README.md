@@ -144,7 +144,7 @@ Again, `win-notify` is much **simpler** to use than native WinRT notifications A
 
 ## API
 ### Tile updates
-### `winNotify.viaTileUpdate(templatesDefinitions, [optional] options)`
+#### `winNotify.viaTileUpdate(templatesDefinitions, [optional] options)`
 Updates live tile with new content defined in templates definition.
 ##### templatesDefinitions
 It's an object with following structure:
@@ -172,7 +172,6 @@ object needs to contain properties which are template's parameters and those can
 
 * `image` - can be simple `string` or `object` with `src`, `alt` and `addImageQuery` properties - 
   [see MSDN for more details](http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx)
-
 * `text` - can be simple `string` or `object` with `lang` and `text` properties - 
   [see msdn docs for more details](http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx)
 
@@ -221,13 +220,15 @@ if secondary tile with `tileId` exists
 
 
 
-#### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
+
+##### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
 Both `TemplatesDefinition` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinition-optional-options) method.
 
-#### `winNotify.clearTile([optional] options)`
+##### `winNotify.clearTile([optional] options)`
 Removes all updates and causes the tile to display its default content as declared in the app's manifest.
 Optional options object can contain `tileId` property which allows to clear content of secondary tile.
+
 
 
 ### Toasts notifications
