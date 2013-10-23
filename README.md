@@ -144,9 +144,9 @@ Again, `win-notify` is much **simpler** to use than native WinRT notifications A
 
 ## API
 ### Tile updates
-#### `winNotify.viaTileUpdate(templatesDefinition, [optional] options)`
+#### `winNotify.viaTileUpdate(templatesDefinitions, [optional] options)`
 Updates live tile with new content defined in templates definition.
-##### templatesDefinition
+##### templatesDefinitions
 It's an object with following structure:
 
 ```js
@@ -161,25 +161,24 @@ It's an object with following structure:
 ```
 Every `templateDefinition` object needs to named after template name from [tile templates catalog](http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx)
 for example `tileSquare150x150Text04`.
-Both camelCase and PascalCase naming conventions are supported. 
+Both camelCase and PascalCase naming conventions are supported (both `tileSquare150x150Text04` and `TileSquare150x150Text04` will work). 
 If you want to send update only for one tile type, specify only one template definition,
 if you want to handle more tile types(medium, wide, large etc) specify template definition 
 for each of them (it's best practise to send updates to all handled by app tile types, so if your app 
 supports wide and medium tiles send update for both).
 
-###### Single template definition object
 When you know which template definition from catalog you want to use, `templateDefinition` 
 object needs to contain properties which are template's parameters and those can be of `text` or `image` type.
 
 * `image` - can be simple `string` or `object` with `src`, `alt` and `addImageQuery` properties - 
-  (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx]
+  [see MSDN for more details](http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx)
 
 * `text` - can be simple `string` or `object` with `lang` and `text` properties - 
-  (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx]
+  [see msdn docs for more details](http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx)
 
 Let's say we want to use template `TileSquare150x150PeekImageAndText02`:
 
-It looks like:
+It has following xml definition:
 ```xml
 <tile>
   <visual version="2">
@@ -208,17 +207,19 @@ Notice that `image` and `text` properites have proper suffixes which match `id` 
 
 It's an object with following properties (all optional):
 `addImageQuery`, `baseUri`, `branding`, `contentId`, `lang`, `version`
-Read more about each of them on (MSDN)[http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx]
+Read more about each of them on [MSDN](http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx).
 
 Additionalally options object can contain following properties:
-* `tag` - gets or sets a string that Windows can use to prevent duplicate notification content from appearing in the queue.
-* `expirationTime` - gets or sets the time (DateTime) that Windows will remove the notification from the tile.
+* `tag` - gets or sets a `string` that Windows can use to prevent duplicate notification content from appearing in the queue.
+* `expirationTime` - gets or sets the time (`DateTime`) that Windows will remove the notification from the tile.
 * `tileId` - if not specified tile update will update application tile, if specified it will update ** secondary tile **
 if secondary tile with `tileId` exists
 
 * `deliveryTime` - gets the time (DateTime) at which the tile is scheduled to be updated (applies only to scheduled tile updates).
 * `id` - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).
 * `debug` - if set to true will `console.log` xml output for debugging purposes
+
+
 
 #### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
