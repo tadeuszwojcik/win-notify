@@ -221,11 +221,11 @@ if secondary tile with `tileId` exists
 
 
 
-##### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
+#### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
 Both `TemplatesDefinition` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinition-optional-options) method.
 
-##### `winNotify.clearTile([optional] options)`
+#### `winNotify.clearTile([optional] options)`
 Removes all updates and causes the tile to display its default content as declared in the app's manifest.
 Optional options object can contain `tileId` property which allows to clear content of secondary tile.
 
