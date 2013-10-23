@@ -1,0 +1,406 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Win-notify by tadeuszwojcik</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/tadeuszwojcik/win-notify">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/tadeuszwojcik/win-notify/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/tadeuszwojcik/win-notify/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Win-notify</h1>
+          <p>Simple notifications API for JavaScript Windows Store apps</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/tadeuszwojcik">tadeuszwojcik</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="win-notify" class="anchor" href="#win-notify"><span class="octicon octicon-link"></span></a>win-notify</h1>
+
+<p>Simple notifications API for JavaScript Windows Store apps.</p>
+
+<p>Compatible with <strong>Windows 8</strong> and <strong>8.1</strong> APIs.</p>
+
+<h2>
+<a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h2>
+
+<p><strong>Short version</strong>: because native WinRT notifications
+API (<a href="http://msdn.microsoft.com/library/windows/apps/br208661">Windows.UI.Notifications</a>) 
+isn't JavaScript friendly(to put it mildly - <a href="#using-native-winrt-notifications-api">see example below</a>).</p>
+
+<p><strong>Longer version</strong>: Everyone who builds Windows Store apps knows that live tiles and toasts notifications 
+are great way to engage users.
+WinRT API provides way to utilize those features, unfortunately it requires messing with 
+XML (yeah XML - <a href="#using-native-winrt-notifications-api">see example below</a>) and work with API which is more designed for C#/C++ devs.
+I was a bit frustrated by the current state of affairs, so written this lib.
+It's not too abstracted from native WinRT API, 
+but provides <strong>much simpler way of working with notifications from Javascript</strong> (at least I hope so).</p>
+
+<h2>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>npm install win-notify
+</pre></div>
+
+<div class="highlight highlight-sh"><pre><span class="nv">$ </span>bower install win-notify
+</pre></div>
+
+<p>or simply copy file win-notify.js file to your project.</p>
+
+<h2>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<h3>
+<a name="tile-notifications" class="anchor" href="#tile-notifications"><span class="octicon octicon-link"></span></a>Tile notifications</h3>
+
+<p><img src="https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg" alt="tile notifications"></p>
+
+<p>Let's say we want to update tile with text and image when it's displayed on start screen as 
+wide tile and text only when it's displayed as medium tile:</p>
+
+<p align="center">
+<img src="https://f.cloud.github.com/assets/1707138/1392451/4f901d72-3c0b-11e3-9c7a-6825eb33055c.PNG">   
+<img src="https://f.cloud.github.com/assets/1707138/1369086/bbfe889c-39d4-11e3-9c42-ef99011ec09f.png"></p>
+
+<h5>
+<a name="using-win-notify" class="anchor" href="#using-win-notify"><span class="octicon octicon-link"></span></a>using <code>win-notify</code>:</h5>
+
+<div class="highlight highlight-js"><pre><span class="nx">winNotify</span><span class="p">.</span><span class="nx">viaTileUpdate</span><span class="p">({</span>
+    <span class="nx">tileWide310x150SmallImageAndText04</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">image1</span><span class="o">:</span> <span class="s1">'http://uifaces.com/faces/_twitter/cacestgang_73.jpg'</span><span class="p">,</span>
+      <span class="nx">text1</span><span class="o">:</span> <span class="s1">'Hello'</span><span class="p">,</span>
+      <span class="nx">text2</span><span class="o">:</span> <span class="s1">'World'</span>
+    <span class="p">},</span>
+    <span class="nx">tileSquareText02</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">text1</span><span class="o">:</span> <span class="s1">'Hello'</span><span class="p">,</span>
+      <span class="nx">text2</span><span class="o">:</span> <span class="s1">'World'</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">);</span>
+</pre></div>
+
+<h5>
+<a name="using-native-winrt-notifications-api" class="anchor" href="#using-native-winrt-notifications-api"><span class="octicon octicon-link"></span></a>using native WinRT notifications API:</h5>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">Notifications</span> <span class="o">=</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Notifications</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">Imaging</span> <span class="o">=</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">Graphics</span><span class="p">.</span><span class="nx">Imaging</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">tileXml</span> <span class="o">=</span> <span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileUpdateManager</span><span class="p">.</span><span class="nx">getTemplateContent</span><span class="p">(</span>
+  <span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileTemplateType</span><span class="p">.</span><span class="nx">tileWide310x150SmallImageAndText04</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">tileTextAttributes</span> <span class="o">=</span> <span class="nx">tileXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"text"</span><span class="p">);</span>
+<span class="nx">tileTextAttributes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">tileXml</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">));</span>
+<span class="nx">tileTextAttributes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">tileXml</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"World"</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">tileImageAttributes</span> <span class="o">=</span> <span class="nx">tileXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"image"</span><span class="p">);</span>
+<span class="nx">tileImageAttributes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span> <span class="s2">"http://uifaces.com/faces/_twitter/cacestgang_73.jpg"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">squareTileXml</span> <span class="o">=</span> <span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileUpdateManager</span><span class="p">.</span><span class="nx">getTemplateContent</span><span class="p">(</span>
+  <span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileTemplateType</span><span class="p">.</span><span class="nx">tileSquareText02</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">squareTileTextAttributes</span> <span class="o">=</span> <span class="nx">squareTileXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"text"</span><span class="p">);</span>
+<span class="nx">squareTileTextAttributes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">squareTileXml</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"Hello"</span><span class="p">));</span>
+<span class="nx">squareTileTextAttributes</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">squareTileXml</span><span class="p">.</span><span class="nx">createTextNode</span><span class="p">(</span><span class="s2">"World"</span><span class="p">));</span>
+
+<span class="kd">var</span> <span class="nx">node</span> <span class="o">=</span> <span class="nx">tileXml</span><span class="p">.</span><span class="nx">importNode</span><span class="p">(</span><span class="nx">squareTileXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"binding"</span><span class="p">).</span><span class="nx">item</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="kc">true</span><span class="p">);</span>
+<span class="nx">tileXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"visual"</span><span class="p">).</span><span class="nx">item</span><span class="p">(</span><span class="mi">0</span><span class="p">).</span><span class="nx">appendChild</span><span class="p">(</span><span class="nx">node</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">tileNotification</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileNotification</span><span class="p">(</span><span class="nx">tileXml</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">tileUpdater</span> <span class="o">=</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Notifications</span><span class="p">.</span><span class="nx">TileUpdateManager</span><span class="p">.</span><span class="nx">createTileUpdaterForApplication</span><span class="p">();</span>
+<span class="nx">tileUpdater</span><span class="p">.</span><span class="nx">update</span><span class="p">(</span><span class="nx">tileNotification</span><span class="p">);</span>
+</pre></div>
+
+<p>Hope you see now which API is <strong>simpler</strong> and why it's worth using <code>win-notify</code> in your project.
+<a href="#tile-updates">Check out API section</a> to learn more about details.</p>
+
+<h3>
+<a name="toast-notifications" class="anchor" href="#toast-notifications"><span class="octicon octicon-link"></span></a>Toast notifications</h3>
+
+<p><img src="https://f.cloud.github.com/assets/1707138/1368910/530fa5ca-39c8-11e3-85a3-f75e6f3e80f8.PNG" alt="toast notifications"></p>
+
+<p>Let's say we want to show toast notification with text and image:</p>
+
+<p align="center">
+<img src="https://f.cloud.github.com/assets/1707138/1392452/4fba40ca-3c0b-11e3-8f9f-68147b45b475.PNG"></p>
+
+<h5>
+<a name="using-win-notify-1" class="anchor" href="#using-win-notify-1"><span class="octicon octicon-link"></span></a>using <code>win-notify</code>:</h5>
+
+<div class="highlight highlight-js"><pre><span class="nx">winNotify</span><span class="p">.</span><span class="nx">viaToast</span><span class="p">({</span>
+  <span class="nx">toastImageAndText02</span><span class="o">:</span> <span class="p">{</span>
+    <span class="nx">text1</span><span class="o">:</span> <span class="s1">'Hello'</span><span class="p">,</span>
+    <span class="nx">text2</span><span class="o">:</span> <span class="s1">'World'</span><span class="p">,</span>
+    <span class="nx">image1</span><span class="o">:</span> <span class="s1">'http://uifaces.com/faces/_twitter/cacestgang_73.jpg'</span><span class="p">,</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+
+<h5>
+<a name="using-native-winrt-notifications-api-1" class="anchor" href="#using-native-winrt-notifications-api-1"><span class="octicon octicon-link"></span></a>using native WinRT notifications API:</h5>
+
+<div class="highlight highlight-js"><pre><span class="kd">var</span> <span class="nx">notifications</span> <span class="o">=</span> <span class="nx">Windows</span><span class="p">.</span><span class="nx">UI</span><span class="p">.</span><span class="nx">Notifications</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">ToastTemplateType</span><span class="p">.</span><span class="nx">toastImageAndText02</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">toastXml</span> <span class="o">=</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">ToastNotificationManager</span><span class="p">.</span><span class="nx">getTemplateContent</span><span class="p">(</span><span class="nx">template</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">toastTextElements</span> <span class="o">=</span> <span class="nx">toastXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"text"</span><span class="p">);</span>
+<span class="nx">toastTextElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"Hello"</span><span class="p">;</span>
+<span class="nx">toastTextElements</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"World"</span><span class="p">;</span> 
+
+<span class="kd">var</span> <span class="nx">toastImageElements</span> <span class="o">=</span> <span class="nx">toastXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"image"</span><span class="p">);</span>
+<span class="nx">toastImageElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span> <span class="s2">"http://uifaces.com/faces/_twitter/cacestgang_73.jpg"</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">toast</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">ToastNotification</span><span class="p">(</span><span class="nx">toastXml</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">toastNotifier</span> <span class="o">=</span> <span class="nx">notifications</span><span class="p">.</span><span class="nx">ToastNotificationManager</span><span class="p">.</span><span class="nx">createToastNotifier</span><span class="p">();</span>
+<span class="nx">toastNotifier</span><span class="p">.</span><span class="nx">show</span><span class="p">(</span><span class="nx">toast</span><span class="p">);</span>
+</pre></div>
+
+<p>Again, <code>win-notify</code> is much <strong>simpler</strong> to use than native WinRT notifications API.
+<a href="#toasts-notifications">Check out API section</a> to learn more about details.</p>
+
+<h1>
+<a name="api" class="anchor" href="#api"><span class="octicon octicon-link"></span></a>API</h1>
+
+<h2>
+<a name="tile-updates" class="anchor" href="#tile-updates"><span class="octicon octicon-link"></span></a>Tile updates</h2>
+
+<h4>
+<a name="winnotifyviatileupdatetemplatesdefinitions-optional-options" class="anchor" href="#winnotifyviatileupdatetemplatesdefinitions-optional-options"><span class="octicon octicon-link"></span></a><code>winNotify.viaTileUpdate(templatesDefinitions, [optional] options)</code>
+</h4>
+
+<p>Updates live tile with new content defined in templates definitions.</p>
+
+<h5>
+<a name="templatesdefinitions" class="anchor" href="#templatesdefinitions"><span class="octicon octicon-link"></span></a>templatesDefinitions</h5>
+
+<p>It's an object which contains template definition objects and has following structure:</p>
+
+<div class="highlight highlight-js"><pre><span class="p">{</span>
+  <span class="s1">'templateDefinition'</span><span class="o">:</span> <span class="p">{</span>
+     <span class="p">...</span> <span class="nx">template</span> <span class="nx">paremeters</span>
+  <span class="p">},</span>
+  <span class="s1">'TemplateDefinition'</span> <span class="o">:</span> <span class="p">{</span>
+    <span class="p">...</span> <span class="nx">template</span> <span class="nx">parameters</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>Every single <code>templateDefinition</code> object needs to named after template name from <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx">tile templates catalog</a>
+(for example <code>tileSquare150x150Text04</code>).
+Both camelCase and PascalCase naming conventions are supported (both <code>tileSquare150x150Text04</code> and <code>TileSquare150x150Text04</code> will work). 
+If you want to send update only for one tile type, specify only one template definition,
+if you want to handle more tile types(medium, wide, large etc) specify template definition 
+for each of them (it's best practise to send updates to all handled by app tile types, so if your app 
+supports wide and medium tiles send update for both).</p>
+
+<p>When you know which template definition from catalog you want to use, <code>templateDefinition</code> 
+object needs to contain properties which are template's parameters and those can be of <code>text</code> or <code>image</code> type.</p>
+
+<ul>
+<li>
+<code>image</code> - can be simple <code>string</code> or <code>object</code> with <code>src</code>, <code>alt</code> and <code>addImageQuery</code> properties - 
+<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx">see MSDN for more details</a>
+</li>
+<li>
+<code>text</code> - can be simple <code>string</code> or <code>object</code> with <code>lang</code> and <code>text</code> properties - 
+<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx">see MSDN for more details</a>
+</li>
+</ul><p>Let's say we want to use template <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx#TileSquarePeekImageAndText02"><code>TileSquare150x150PeekImageAndText02</code></a>:</p>
+
+<p>It has following xml definition:</p>
+
+<div class="highlight highlight-xml"><pre><span class="nt">&lt;tile&gt;</span>
+  <span class="nt">&lt;visual</span> <span class="na">version=</span><span class="s">"2"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;binding</span> <span class="na">template=</span><span class="s">"TileSquare150x150PeekImageAndText02"</span> <span class="na">fallback=</span><span class="s">"TileSquarePeekImageAndText02"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;image</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">src=</span><span class="s">"image1"</span> <span class="na">alt=</span><span class="s">"alt text"</span><span class="nt">/&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">id=</span><span class="s">"1"</span><span class="nt">&gt;</span>Text Field 1 (larger text)<span class="nt">&lt;/text&gt;</span>
+      <span class="nt">&lt;text</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>Text Field 2<span class="nt">&lt;/text&gt;</span>
+    <span class="nt">&lt;/binding&gt;</span>  
+  <span class="nt">&lt;/visual&gt;</span>
+<span class="nt">&lt;/tile&gt;</span>
+</pre></div>
+
+<p><code>Templatedefinition</code> object for such template looks like:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">tileSquare150x150PeekImageAndText02</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">image1</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">src</span><span class="o">:</span><span class="s1">'image1'</span><span class="p">,</span>
+        <span class="nx">alt</span><span class="o">:</span><span class="s1">'alt text'</span>
+      <span class="p">},</span>
+      <span class="nx">text1</span><span class="o">:</span> <span class="s1">'Text Field 1 (larger text)'</span><span class="p">,</span>
+      <span class="nx">text2</span><span class="o">:</span> <span class="s1">'Text Field 2'</span>
+    <span class="p">}</span>
+</pre></div>
+
+<p>Notice that <code>image</code> and <code>text</code> properites have proper suffixes which match <code>id</code> of element in template xml 
+(<code>text1</code> for text with id=1 etc).</p>
+
+<h5>
+<a name="options" class="anchor" href="#options"><span class="octicon octicon-link"></span></a>options</h5>
+
+<p>It's an object with following properties (all optional):
+<code>addImageQuery</code>, <code>baseUri</code>, <code>branding</code>, <code>contentId</code>, <code>lang</code>, <code>version</code>
+Read more about each of them on <a href="http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx">MSDN</a>.</p>
+
+<p>Additionalally options object can contain following properties:</p>
+
+<ul>
+<li>
+<code>tag</code> - gets or sets a <code>string</code> that Windows can use to prevent duplicate notification content from appearing in the queue.</li>
+<li>
+<code>expirationTime</code> - gets or sets the time (<code>DateTime</code>) that Windows will remove the notification from the tile.</li>
+<li>
+<code>tileId</code> - if not specified tile update will update application tile, if specified it will update <strong>secondary tile</strong>
+if secondary tile with <code>tileId</code> exists</li>
+<li>
+<code>deliveryTime</code> - gets the time (DateTime) at which the tile is scheduled to be updated (applies only to scheduled tile updates).</li>
+<li>
+<code>id</code> - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).</li>
+<li>
+<code>debug</code> - if set to true will <code>console.log</code> xml output for debugging purposes</li>
+</ul><h4>
+<a name="winnotifyviascheduledtileupdatetemplatesdefinitions-optional-options" class="anchor" href="#winnotifyviascheduledtileupdatetemplatesdefinitions-optional-options"><span class="octicon octicon-link"></span></a><code>winNotify.viaScheduledTileUpdate(templatesDefinitions, [optional] options)</code>
+</h4>
+
+<p>Schedules update to live tile with new content defined in templates definition.
+Both <code>TemplatesDefinitions</code> and <code>options</code> objects are the same as for <a href="#winnotifyviatileupdatetemplatesdefinitions-optional-options"><code>winNotify.viaTileUpdate</code></a> method.</p>
+
+<h4>
+<a name="winnotifycleartileoptional-options" class="anchor" href="#winnotifycleartileoptional-options"><span class="octicon octicon-link"></span></a><code>winNotify.clearTile([optional] options)</code>
+</h4>
+
+<p>Removes all updates and causes the tile to display its default content as declared in the app's manifest.
+Optional options object can contain <code>tileId</code> property which allows to clear content of secondary tile.</p>
+
+<h2>
+<a name="toasts-notifications" class="anchor" href="#toasts-notifications"><span class="octicon octicon-link"></span></a>Toasts notifications</h2>
+
+<h4>
+<a name="winnotifyviatoasttemplatesdefinitions-optional-options" class="anchor" href="#winnotifyviatoasttemplatesdefinitions-optional-options"><span class="octicon octicon-link"></span></a><code>winNotify.viaToast(templatesDefinitions, [optional] options)</code>
+</h4>
+
+<p>Raises a toast notification.</p>
+
+<p><code>Templatesdefinitions</code> object has the same structure as one from <a href="#winnotifyviatileupdatetemplatesdefinitions-optional-options"><code>winNotify.viaTileUpdate</code></a> method.
+Only template names are changes, and need to match ones
+from <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx">toasts template catalog</a>.</p>
+
+<p>Let's say we want to use template <a href="http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx#ToastImageAndText04"><code>ToastImageAndText04</code></a>:</p>
+
+<p>It has following xml definition:</p>
+
+<div class="highlight highlight-xml"><pre><span class="nt">&lt;toast&gt;</span>
+    <span class="nt">&lt;visual&gt;</span>
+        <span class="nt">&lt;binding</span> <span class="na">template=</span><span class="s">"ToastImageAndText04"</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;image</span> <span class="na">id=</span><span class="s">"1"</span> <span class="na">src=</span><span class="s">"image1"</span> <span class="na">alt=</span><span class="s">"image1"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">id=</span><span class="s">"1"</span><span class="nt">&gt;</span>headlineText<span class="nt">&lt;/text&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">id=</span><span class="s">"2"</span><span class="nt">&gt;</span>bodyText1<span class="nt">&lt;/text&gt;</span>
+            <span class="nt">&lt;text</span> <span class="na">id=</span><span class="s">"3"</span><span class="nt">&gt;</span>bodyText2<span class="nt">&lt;/text&gt;</span>
+        <span class="nt">&lt;/binding&gt;</span>  
+    <span class="nt">&lt;/visual&gt;</span>
+<span class="nt">&lt;/toast&gt;</span>
+</pre></div>
+
+<p><code>Templatedefinition</code> object for such template looks like:</p>
+
+<div class="highlight highlight-js"><pre><span class="nx">toastImageAndText04</span><span class="o">:</span> <span class="p">{</span>
+      <span class="nx">image1</span><span class="o">:</span> <span class="p">{</span>
+        <span class="nx">src</span><span class="o">:</span><span class="s1">'image1'</span><span class="p">,</span>
+        <span class="nx">alt</span><span class="o">:</span><span class="s1">'alt text'</span>
+      <span class="p">},</span>
+      <span class="nx">text1</span><span class="o">:</span> <span class="s1">'headlineText'</span><span class="p">,</span>
+      <span class="nx">text2</span><span class="o">:</span> <span class="s1">'bodyText1'</span><span class="p">,</span>
+      <span class="nx">text3</span><span class="o">:</span> <span class="s1">'bodyText2'</span>
+    <span class="p">}</span>
+</pre></div>
+
+<h5>
+<a name="options-1" class="anchor" href="#options-1"><span class="octicon octicon-link"></span></a>options</h5>
+
+<p>Options from <a href="#winnotifyviatileupdatetemplatesdefinitions-optional-options"><code>winNotify.viaTileUpdate</code></a> apply here as well, additionally you can specify following properties:</p>
+
+<ul>
+<li>
+<code>onactivated</code>,<code>ondismissed</code>, <code>onfailed</code> (<a href="http://msdn.microsoft.com/en-US/library/windows/apps/windows.ui.notifications.toastnotification#events">MSDN reference</a>)</li>
+<li>
+<code>launch</code>, <code>duration</code> (<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br230846.aspx">MSDN reference</a>)</li>
+<li>
+<code>loop</code>, <code>silent</code> <code>src</code> (<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br230842.aspx">MSDN reference</a>)</li>
+</ul><h4>
+<a name="winnotifyviascheduledtoasttemplatesdefinitions-optional-options" class="anchor" href="#winnotifyviascheduledtoasttemplatesdefinitions-optional-options"><span class="octicon octicon-link"></span></a><code>winNotify.viaScheduledToast(templatesDefinitions, [optional] options)</code>
+</h4>
+
+<p>Schedule toast notification that will display at the scheduled time.
+Both <code>TemplatesDefinitions</code> and <code>options</code> objects are the same as for <a href="#winnotifyviatoasttemplatesdefinition-optional-options"><code>winNotify.viaToast</code></a> method.</p>
+
+<h2>
+<a name="badge-updates" class="anchor" href="#badge-updates"><span class="octicon octicon-link"></span></a>Badge updates</h2>
+
+<h4>
+<a name="winnotifyviabadgeupdatevalue-optional-options" class="anchor" href="#winnotifyviabadgeupdatevalue-optional-options"><span class="octicon octicon-link"></span></a><code>winNotify.viaBadgeUpdate(value, [optional] options)</code>
+</h4>
+
+<p>Updates a badge overlay tile.</p>
+
+<p><code>Value</code> is a string and defines badge value (<a href="http://msdn.microsoft.com/en-us/library/windows/apps/br212849.aspx">MSDN referene</a>).</p>
+
+<p><code>Options</code> object can contain <code>tileId</code> property, so badge update will update badge of secondary tile, not main app tile.</p>
+
+<h4>
+<a name="winnotifyclearbadgeoptional-options" class="anchor" href="#winnotifyclearbadgeoptional-options"><span class="octicon octicon-link"></span></a><code>winNotify.clearBadge([optional] options)</code>
+</h4>
+
+<p>Removes the badge from the tile.
+Optional options object can contain <code>tileId</code> property which allows to remove badge of secondary tile.</p>
+
+<h2>
+<a name="credits" class="anchor" href="#credits"><span class="octicon octicon-link"></span></a>Credits</h2>
+
+<p>Thanks Kraig Brockschmidt for images (hope he don't mind) and presentation <a href="http://channel9.msdn.com/Events/Build/2013/3-159">Alive with Activity</a> explaining notifications concepts in clear way and Microsoft for MSDN docs.</p>
+
+<h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
+
+<p><a href="LICENSE.txt">WTFPL</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-17985289-6");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
