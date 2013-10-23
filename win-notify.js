@@ -60,7 +60,7 @@
         textXmlAttributes[i].appendChild(xml.createTextNode(unescapeHtml(textValue)));
       } else {
         textXmlAttributes[i].setAttribute("lang", textValue.lang);
-        textXmlAttributes[i].appendChild(xml.createTextNode(unescapeHtml(textValue)));
+        textXmlAttributes[i].appendChild(xml.createTextNode(unescapeHtml(textValue.text)));
       }
     }
   }
@@ -70,7 +70,6 @@
     if (templateValues.contentId) xmlElement.setAttribute("contentId", templateValues.contentId);
     if (templateValues.addImageQuery) xmlElement.setAttribute("addImageQuery", templateValues.addImageQuery);
     if (templateValues.baseUri) xmlElement.setAttribute("baseUri", templateValues.baseUri);
-    if (templateValues.fallback) xmlElement.setAttribute("fallback", templateValues.fallback);
     if (templateValues.lang) xmlElement.setAttribute("lang", templateValues.lang);
     if (templateValues.version) xmlElement.setAttribute("version", templateValues.version);
   }
@@ -83,7 +82,7 @@
     var audioElement = xml.createElement('audio');
     if (values.loop) audioElement.setAttribute('loop', values.loop);
     if (values.silent) audioElement.setAttribute('silent', values.silent);
-    if (values.src) audioElement.setAttribute('src', 'ms-winsoundevent:' + values.src);
+    if (values.src) audioElement.setAttribute('src', values.src);
     xml.firstChild.appendChild(audioElement);
   }
 
@@ -94,7 +93,7 @@
 
     assignImageValuesToXmlAttributes(templateXml, templateValues);
     assignTextValuesToXmlAttributes(templateXml, templateValues);
-    assignMiscValuesToXmlAttribute(templateXml.getElementsByTagName("binding")[0], templateValues);
+    assignMiscValuesToXmlAttribute(templateXml.getElementsByTagName("visual")[0], templateValues);
 
     return templateXml;
   }
@@ -169,7 +168,7 @@
     options = options || {};
 
     function notificationAction(xml) {
-      var tileNotification = TileNotification(xml);
+      var tileNotification = new TileNotification(xml);
       tileNotification.expirationTime = options.expirationTime;
       tileNotification.tag = options.tag;
 
@@ -186,7 +185,7 @@
     options = options || {};
 
     function notificationAction(xml) {
-      var scheduledTileNotification = ScheduledTileNotification(xml, options.deliveryTime);
+      var scheduledTileNotification = new ScheduledTileNotification(xml, options.deliveryTime);
       scheduledTileNotification.expirationTime = options.expirationTime;
       scheduledTileNotification.tag = options.tag;
       scheduledTileNotification.id = options.id;
@@ -220,7 +219,7 @@
 
     function notificationAction(xml) {
       assignToastSpecificValuesToXml(xml, options);
-      var toastNotification = ToastNotification(xml);
+      var toastNotification = new ToastNotification(xml);
       toastNotification.expirationTime = options.expirationTime;
       toastNotification.onactivated = options.onactivated;
       toastNotification.ondismissed = options.ondismissed;
@@ -237,7 +236,7 @@
     options = options || {};
 
     function notificationAction(xml) {
-      var scheduledToastNotification = ScheduledToastNotification(xml, options.deliveryTime);
+      var scheduledToastNotification = new ScheduledToastNotification(xml, options.deliveryTime);
       scheduledToastNotification.expirationTime = options.expirationTime;
       scheduledToastNotification.id = options.id;
       scheduledToastNotification.onactivated = options.onactivated;
