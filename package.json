@@ -1,8 +1,8 @@
 {
   "name": "win-notify",
-  "version": "0.0.1",
-  "description": "Easy to use notifications for javascript windows store apps, no more handcrafting xml in javascript!",
-  "main": "win-notigy.js",
+  "version": "0.1.0",
+  "description": "Simple notifications API for JavaScript Windows Store apps",
+  "main": "win-notifyy.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/tadeuszwojcik/win-notify.git"

@@ -1,3 +1,10 @@
+/**
+ * win-notify - Simple notifications API for JavaScript Windows Store apps
+ * @version v0.1.0 - 2013-10-24
+ * @link http://tadeuszwojcik.github.io/win-notify/
+ * @author Tadeusz Wójcik <tadeuszwojcik@gmail.com>
+ * @license WTFPL License, https://github.com/tadeuszwojcik/win-notify/blob/master/LICENSE.txt
+ */
 (function (exports) {
   var TileUpdateManager = Windows.UI.Notifications.TileUpdateManager;
   var TileNotification = Windows.UI.Notifications.TileNotification;
