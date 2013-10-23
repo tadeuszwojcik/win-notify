@@ -221,9 +221,9 @@ if secondary tile with `tileId` exists
 
 
 
-#### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
+#### `winNotify.viaScheduledTileUpdate(templatesDefinitions, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
-Both `TemplatesDefinition` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
+Both `TemplatesDefinitions` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
 
 #### `winNotify.clearTile([optional] options)`
 Removes all updates and causes the tile to display its default content as declared in the app's manifest.
@@ -232,8 +232,11 @@ Optional options object can contain `tileId` property which allows to clear cont
 
 
 ## Toasts notifications
-#### `winNotify.viaToast(templatesDefinition, [optional] options)`
-Templates definition object has the same structure as one from [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
+#### `winNotify.viaToast(templatesDefinitions, [optional] options)`
+Raises a toast notification.
+
+
+`Templatesdefinitions` object has the same structure as one from [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
 Only template names are changes, and need to match ones
 from [toasts template catalog] (http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx).
 
@@ -268,22 +271,26 @@ toastImageAndText04: {
 
 ##### options
 Options from [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) apply here as well, additionally you can specify following properties:
-* onactivated
-* ondismissed
-* onfailed
-* launch
-* duration
-* loop
-* silent
-* src ms-winsoundevent:
+* `onactivated`,`ondismissed`, `onfailed` ([MSDN reference](http://msdn.microsoft.com/en-US/library/windows/apps/windows.ui.notifications.toastnotification#events))
+* `launch`, `duration` ([MSDN reference](http://msdn.microsoft.com/en-us/library/windows/apps/br230846.aspx))
+* `loop`, `silent` `src` ([MSDN reference](http://msdn.microsoft.com/en-us/library/windows/apps/br230842.aspx))
 
+#### `winNotify.viaScheduledToast(templatesDefinitions, [optional] options)`
+Schedule toast notification that will display at the scheduled time.
+Both `TemplatesDefinitions` and `options` objects are the same as for [`winNotify.viaToast`](#winnotifyviatoasttemplatesdefinition-optional-options) method.
 
-
-#### `winNotify.viaScheduledToast(templatesDefinition, [optional] options)`
 
 ## Badge updates
 #### `winNotify.viaBadgeUpdate(value, [optional] options)`
+Updates a badge overlay tile.
+
+
+`Value` is a string and defines badge value ([MSDN referene](http://msdn.microsoft.com/en-us/library/windows/apps/br212849.aspx)).
+`Options` object can contain `tileId` property, so badge update will update badge of secondary tile, not main app tile.
+
 #### `winNotify.clearBadge([optional] options)`
+Removes the badge from the tile.
+Optional options object can contain `tileId` property which allows to remove badge of secondary tile.
 
 ## Credits
 
