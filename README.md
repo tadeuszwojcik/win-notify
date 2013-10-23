@@ -150,23 +150,26 @@ Updates live tile with new content defined in templates definition.
 It's an object with following structure:
 
 ```js
-   {
-    'templateDefinitio': {
-       ... template paremeters
-    },
-    'TemplateDefinition' : {
-      ... template parameters
-    }
-   }
+{
+  'templateDefinition': {
+     ... template paremeters
+  },
+  'TemplateDefinition' : {
+    ... template parameters
+  }
+}
 ```
-Each `TemplateDefinition` object needs to be valid template name, for example `tileSquare150x150Text04` ((check out tiles templates catalog)[http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx]).
-Both camelCase and PascalCase naming conventions are supported. If you want to send update only for one tile type, 
-specify only one template definition, if you want to handle more tile types(medium, wide, large etc) specify template definition 
-for each of them (it's actually best practise to send updates to all handled by app tile types, as user can change tile type anytime).
+Every `templateDefinition` object needs to named after template name from [tile templates catalog](http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx)
+for example `tileSquare150x150Text04`.
+Both camelCase and PascalCase naming conventions are supported. 
+If you want to send update only for one tile type, specify only one template definition,
+if you want to handle more tile types(medium, wide, large etc) specify template definition 
+for each of them (it's best practise to send updates to all handled by app tile types, so if your app 
+supports wide and medium tiles send update for both).
 
-###### Template definition object
+###### Single template definition object
 When you know which template definition from catalog you want to use, `templateDefinition` 
-object needs to contain properties for such template and it can be type `text` or `image`.
+object needs to contain properties which are template's parameters and those can be of `text` or `image` type.
 
 * `image` - can be simple `string` or `object` with `src`, `alt` and `addImageQuery` properties - 
   (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212855.aspx]
@@ -175,8 +178,9 @@ object needs to contain properties for such template and it can be type `text` o
   (see msdn docs for more details)[http://msdn.microsoft.com/en-us/library/windows/apps/br212856.aspx]
 
 Let's say we want to use template `TileSquare150x150PeekImageAndText02`:
+
 It looks like:
-```
+```xml
 <tile>
   <visual version="2">
     <binding template="TileSquare150x150PeekImageAndText02" fallback="TileSquarePeekImageAndText02">
@@ -200,19 +204,11 @@ tileSquare150x150PeekImageAndText02: {
 ```
 Notice that `image` and `text` properites have proper suffixes which match `id` of element in template xml.
 
-
-
-
-
 ##### options
+
 It's an object with following properties (all optional):
-* `addImageQuery` 
-* `baseUri`
-* `branding`
-* `contentId`
-* `lang`
-* `version`
-Read more about each of on (MSDN)[http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx]
+`addImageQuery`, `baseUri`, `branding`, `contentId`, `lang`, `version`
+Read more about each of them on (MSDN)[http://msdn.microsoft.com/en-us/library/windows/apps/br212857.aspx]
 
 Additionalally options object can contain following properties:
 * `tag` - gets or sets a string that Windows can use to prevent duplicate notification content from appearing in the queue.
@@ -222,6 +218,7 @@ if secondary tile with `tileId` exists
 
 * `deliveryTime` - gets the time (DateTime) at which the tile is scheduled to be updated (applies only to scheduled tile updates).
 * `id` - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).
+* `debug` - if set to true will `console.log` xml output for debugging purposes
 
 #### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
@@ -288,16 +285,6 @@ Options from `winNotify.viaTileUpdates` apply here also:
 
 ### Badge updates
 
-
-
-unescapes escaped html automatically
-
-lowercases template names
-debugging
-
-
-
-### not implemented by API - periodic
 
 ## Credits
 
