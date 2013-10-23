@@ -224,57 +224,35 @@ if secondary tile with `tileId` exists
 * `id` - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).
 
 #### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
-
+Schedules update to live tile with new content defined in templates definition.
+Both `TemplatesDefinition` and `options` object are the same as for `winNotify.viaTileUpdate` method.
 
 #### `winNotify.clearTile([optional] options)`
+Removes all updates and causes the tile to display its default content as declared in the app's manifest.
+Optional options object can contain `tileId` property which allows to clear content of secondary tile.
 
 
 ### Toasts notifications
+#### `winNotify.viaToast(templatesDefinition, [optional] options)`
+#### `winNotify.viaScheduledToast(templatesDefinition, [optional] options)`
 
 ### Badge updates
+
 
 
 unescapes escaped html automatically
 
 lowercases template names
-
-image src, or src alt, addImageQuery
-
-text, or text lang, cos tu nie gra w kodzie
-
 debugging
 
-secondary tiles
-
-### not implemented by API - scheduled?
-
-Template definitions
-options
-### `winNotify.viaTileUpdate`
-
-```js
-   winNotify.viaTileUpdate({
-    'templateName': {
-       ... template paremeters
-    },
-    'templateName' : {
-      ... template parameters
-    }
-   } options);
-```
 
 
-### `winNotify.viaScheduledTileUpdate`
-### `winNotify.clearTile`
-### `winNotify.viaToast`
-### `winNotify.viaScheduledToast`
-### `winNotify.viaBadgeUpdate`
-### `winNotify.clearBadge`
-
+### not implemented by API - periodic
 
 ## Credits
 
-Thanks Kraig Brockschmidt for images (hope he don't mind) and presentation [Alive with Activity](http://channel9.msdn.com/Events/Build/2013/3-159) explaining notifications concepts in clear way.
+Thanks Kraig Brockschmidt for images (hope he don't mind) and presentation [Alive with Activity](http://channel9.msdn.com/Events/Build/2013/3-159) explaining notifications concepts in clear way and Microsoft for MSDN docs.
+
 ## License
   [WTFPL](LICENSE.txt)
 
