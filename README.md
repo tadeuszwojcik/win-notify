@@ -142,10 +142,10 @@ Again, `win-notify` is much **simpler** to use than native WinRT notifications A
 [Check out API section](#toasts-notifications) to learn more about details.
 
 
-## API
-### Tile updates
+# API
+## Tile updates
 #### `winNotify.viaTileUpdate(templatesDefinitions, [optional] options)`
-Updates live tile with new content defined in templates definition.
+Updates live tile with new content defined in templates definitions.
 ##### templatesDefinitions
 It's an object with following structure:
 
@@ -160,7 +160,7 @@ It's an object with following structure:
 }
 ```
 Every `templateDefinition` object needs to named after template name from [tile templates catalog](http://msdn.microsoft.com/en-us/library/windows/apps/hh761491.aspx)
-for example `tileSquare150x150Text04`.
+(for example `tileSquare150x150Text04`).
 Both camelCase and PascalCase naming conventions are supported (both `tileSquare150x150Text04` and `TileSquare150x150Text04` will work). 
 If you want to send update only for one tile type, specify only one template definition,
 if you want to handle more tile types(medium, wide, large etc) specify template definition 
@@ -213,7 +213,6 @@ Additionalally options object can contain following properties:
 * `expirationTime` - gets or sets the time (`DateTime`) that Windows will remove the notification from the tile.
 * `tileId` - if not specified tile update will update application tile, if specified it will update ** secondary tile **
 if secondary tile with `tileId` exists
-
 * `deliveryTime` - gets the time (DateTime) at which the tile is scheduled to be updated (applies only to scheduled tile updates).
 * `id` - gets or sets the unique ID that is used to identify the scheduled tile in the schedule (applies only to scheduled tile updates).
 * `debug` - if set to true will `console.log` xml output for debugging purposes
@@ -223,7 +222,7 @@ if secondary tile with `tileId` exists
 
 #### `winNotify.viaScheduledTileUpdate(templatesDefinition, [optional] options)`
 Schedules update to live tile with new content defined in templates definition.
-Both `TemplatesDefinition` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinition-optional-options) method.
+Both `TemplatesDefinition` and `options` objects are the same as for [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
 
 #### `winNotify.clearTile([optional] options)`
 Removes all updates and causes the tile to display its default content as declared in the app's manifest.
@@ -231,14 +230,15 @@ Optional options object can contain `tileId` property which allows to clear cont
 
 
 
-### Toasts notifications
+## Toasts notifications
 #### `winNotify.viaToast(templatesDefinition, [optional] options)`
-Templates definition object has the same structure as one from `viaTileUpdate` method.
+Templates definition object has the same structure as one from [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) method.
 Only template names are changes, and need to match ones
 from [toasts template catalog] (http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx).
 
 Let's say we want to use template `ToastImageAndText04`:
-It looks like:
+
+It has following xml definition:
 ```xml
 <toast>
     <visual>
@@ -266,8 +266,7 @@ toastImageAndText04: {
 ```
 
 ##### options
-
-Options from `winNotify.viaTileUpdates` apply here also:
+Options from [`winNotify.viaTileUpdate`](#winnotifyviatileupdatetemplatesdefinitions-optional-options) apply here as well, additionally you can specify following properties:
 * onactivated
 * ondismissed
 * onfailed
@@ -279,14 +278,11 @@ Options from `winNotify.viaTileUpdates` apply here also:
 
 
 
-
-
-
-
 #### `winNotify.viaScheduledToast(templatesDefinition, [optional] options)`
 
-### Badge updates
-
+## Badge updates
+#### `winNotify.viaBadgeUpdate(value, [optional] options)`
+#### `winNotify.clearBadge([optional] options)`
 
 ## Credits
 
