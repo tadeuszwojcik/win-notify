@@ -93,7 +93,8 @@ tileUpdater.update(tileNotification);
 ```
 
 Hope you see now which API is **simpler** and why it's worth using `win-notify` in your project.
-See API section to learn more about details.
+[Check out API section](#tile-updates) to learn more about details.
+
 
 
 ### Toast notifications
@@ -138,7 +139,7 @@ toastNotifier.show(toast);
 ```
 
 Again, `win-notify` is much **simpler** to use than native WinRT notifications API.
-See API section to learn more about details.
+[Check out API section](#toasts-notifications) to learn more about details.
 
 
 ## API
