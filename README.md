@@ -1,5 +1,4 @@
-win-notify
-=====================
+#win-notify
 
  Simple notifications API for JavaScript Windows Store apps.
   
@@ -14,8 +13,7 @@ isn't JavaScript friendly(to put it mildly - [see example below](#using-native-w
 are great way to engage users.
 WinRT API provides way to utilize those features, unfortunately it requires messing with 
 XML (yeah XML - [see example below](#using-native-winrt-notifications-api)) and work with API which is more designed for C#/C++ devs.
-
-I was bit frustrated by the current state of affairs, so written this lib.
+I was a bit frustrated by the current state of affairs, so written this lib.
 It's not too abstracted from native WinRT API, 
 but provides **much simpler way of working with notifications from Javascript** (at least I hope so).
 
@@ -145,7 +143,18 @@ See API section to learn more about details.
 
 ## API
 ### Tile updates
-#### `winNotify.viaTileUpdate((templatesDefinition)[www.onet.pl], options)` - updates live tile with new content defined in templates definition
+#### `winNotify.viaTileUpdate(templatesDefinition, options)`
+Updates live tile with new content defined in templates definition.
+
+
+
+#### `winNotify.viaScheduledTileUpdate(templatesDefinition, options)`
+
+#### `winNotify.clearTile(options)`
+
+
+
+
 
 
 ### Toasts notifications
