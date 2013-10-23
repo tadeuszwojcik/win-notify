@@ -234,6 +234,56 @@ Optional options object can contain `tileId` property which allows to clear cont
 
 ### Toasts notifications
 #### `winNotify.viaToast(templatesDefinition, [optional] options)`
+Templates definition object has the same structure as one from `viaTileUpdate` method.
+Only template names are changes, and need to match ones
+from [toasts template catalog] (http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx).
+
+Let's say we want to use template `ToastImageAndText04`:
+It looks like:
+```xml
+<toast>
+    <visual>
+        <binding template="ToastImageAndText04">
+            <image id="1" src="image1" alt="image1"/>
+            <text id="1">headlineText</text>
+            <text id="2">bodyText1</text>
+            <text id="3">bodyText2</text>
+        </binding>  
+    </visual>
+</toast>
+```
+Template definition object for such template looks like:
+
+```js
+toastImageAndText04: {
+      image1: {
+        src:'image1',
+        alt:'alt text'
+      },
+      text1: 'headlineText',
+      text2: 'bodyText1',
+      text3: 'bodyText2'
+    }
+```
+
+##### options
+
+Options from `winNotify.viaTileUpdates` apply here also:
+* onactivated
+* ondismissed
+* onfailed
+* launch
+* duration
+* loop
+* silent
+* src ms-winsoundevent:
+
+
+
+
+
+
+
 #### `winNotify.viaScheduledToast(templatesDefinition, [optional] options)`
 
 ### Badge updates
