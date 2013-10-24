@@ -20,13 +20,13 @@
   <body>
       <div id="header">
         <nav>
+          <li class="fork" style="margin-top: 6px;">
+            <a href="https://twitter.com/share" class="twitter-share-button">Tweet</a>
+            <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+          </li>
           <li class="fork">
             <iframe src="http://ghbtns.com/github-btn.html?user=tadeuszwojcik&repo=win-notify&type=watch&count=true&size=medium"
                     allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20" style="vertical-align: middle"></iframe>
-          </li>
-          <li class="fork">
-            <iframe src="http://ghbtns.com/github-btn.html?user=tadeuszwojcik&repo=win-notify&type=follow&count=true&size=medium"
-                    allowtransparency="true" frameborder="0" scrolling="0" width="190" height="20" style="vertical-align: middle"></iframe>
           </li>
 
           <li class="downloads"><a href="https://github.com/tadeuszwojcik/win-notify">View On GitHub</a></li>
@@ -56,15 +56,15 @@
 <a name="why" class="anchor" href="#why"><span class="octicon octicon-link"></span></a>Why?</h2>
 
 <p><strong>Short version</strong>: because native WinRT notifications
-API (<a href="http://msdn.microsoft.com/library/windows/apps/br208661">Windows.UI.Notifications</a>) 
+API (<a href="http://msdn.microsoft.com/library/windows/apps/br208661">Windows.UI.Notifications</a>)
 isn't JavaScript friendly(to put it mildly - <a href="#using-native-winrt-notifications-api">see example below</a>).</p>
 
-<p><strong>Longer version</strong>: Everyone who builds Windows Store apps knows that live tiles and toasts notifications 
+<p><strong>Longer version</strong>: Everyone who builds Windows Store apps knows that live tiles and toasts notifications
 are great way to engage users.
-WinRT API provides way to utilize those features, unfortunately it requires messing with 
+WinRT API provides way to utilize those features, unfortunately it requires messing with
 XML (yeah XML - <a href="#using-native-winrt-notifications-api">see example below</a>) and work with API which is more designed for C#/C++ devs.
 I was a bit frustrated by the current state of affairs, so written this lib.
-It's not too abstracted from native WinRT API, 
+It's not too abstracted from native WinRT API,
 but provides <strong>much simpler way of working with notifications from Javascript</strong> (at least I hope so).</p>
 
 <h2>
@@ -86,7 +86,7 @@ but provides <strong>much simpler way of working with notifications from Javascr
 
 <p><img src="https://f.cloud.github.com/assets/1707138/1368882/13e71dee-39c6-11e3-943e-78af855fab64.jpg" alt="tile notifications"></p>
 
-<p>Let's say we want to update tile with text and image when it's displayed on start screen as 
+<p>Let's say we want to update tile with text and image when it's displayed on start screen as
 wide tile and text only when it's displayed as medium tile:</p>
 
 <p align="center">
@@ -177,7 +177,7 @@ wide tile and text only when it's displayed as medium tile:</p>
 
 <span class="kd">var</span> <span class="nx">toastTextElements</span> <span class="o">=</span> <span class="nx">toastXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"text"</span><span class="p">);</span>
 <span class="nx">toastTextElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"Hello"</span><span class="p">;</span>
-<span class="nx">toastTextElements</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"World"</span><span class="p">;</span> 
+<span class="nx">toastTextElements</span><span class="p">[</span><span class="mi">1</span><span class="p">].</span><span class="nx">innerText</span> <span class="o">=</span> <span class="s2">"World"</span><span class="p">;</span>
 
 <span class="kd">var</span> <span class="nx">toastImageElements</span> <span class="o">=</span> <span class="nx">toastXml</span><span class="p">.</span><span class="nx">getElementsByTagName</span><span class="p">(</span><span class="s2">"image"</span><span class="p">);</span>
 <span class="nx">toastImageElements</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">setAttribute</span><span class="p">(</span><span class="s2">"src"</span><span class="p">,</span> <span class="s2">"http://uifaces.com/faces/_twitter/cacestgang_73.jpg"</span><span class="p">);</span>
