@@ -242,7 +242,7 @@ from [toasts template catalog] (http://msdn.microsoft.com/en-us/library/windows/
 
 Let's say we want to use template [`ToastImageAndText04`](http://msdn.microsoft.com/en-us/library/windows/apps/hh761494.aspx#ToastImageAndText04):
 
-It has following xml definition:
+It has following `xml` definition:
 ```xml
 <toast>
     <visual>
